@@ -140,7 +140,7 @@ class App extends Component {
     if(this.state.enemyHealth < 1){
       this.isEnemyDefeated();
     } else {
-      let newHealthLevel = this.state.healthLevel -  Math.floor((Math.random() * 18) + 1);
+      let newHealthLevel = this.state.healthLevel -  Math.floor((Math.random() * 18) + 100);
       let playerDead = 0;
       if(newHealthLevel <= 0){
         this.setState({
@@ -294,8 +294,10 @@ class App extends Component {
       let location = window.location.href;
       if(location.includes("local")){
         window.location.href = "http://localhost:8080/";
-      } else if(location.includes("video")){
+      } else if (location.includes("video")){
         window.location.href = "https://videogame-bef13.firebaseapp.com";
+      } else {
+        return;
       }
     } else {
       return null;
