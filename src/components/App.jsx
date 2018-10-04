@@ -140,7 +140,7 @@ class App extends Component {
     if(this.state.enemyHealth < 1){
       this.isEnemyDefeated();
     } else {
-      let newHealthLevel = this.state.healthLevel -  Math.floor((Math.random() * 18) + 100);
+      let newHealthLevel = this.state.healthLevel -  Math.floor((Math.random() * 18) + 1);
       let playerDead = 0;
       if(newHealthLevel <= 0){
         this.setState({
