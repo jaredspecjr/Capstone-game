@@ -50,7 +50,9 @@ function Room4(props) {
       playerHurt={props.playerHurt}
       potionUsed={props.potionUsed}
       amountHealed={props.amountHealed}
-      isEnemyDefeated={props.isEnemyDefeated}/>;
+      isEnemyDefeated={props.isEnemyDefeated}
+      type={props.type}
+      stronger={props.stronger}/>;
   }
 }
 
@@ -70,6 +72,8 @@ Room4.propTypes = {
   potionUsed: PropTypes.bool.isRequired,
   amountHealed: PropTypes.number.isRequired,
   isEnemyDefeated: PropTypes.func.isRequired,
+  type: PropTypes.string.isRequired,
+  stronger: PropTypes.bool.isRequired
 };
 
 

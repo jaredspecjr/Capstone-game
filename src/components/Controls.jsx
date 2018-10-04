@@ -71,7 +71,7 @@ function Controls(props) {
         </div>
         <div>
           <button style={linkStyle}>
-            <div  onClick={props.updateRoute}>
+            <div  onClick={props.updateRouteToBoss}>
               <Link style={disabled} to="room10">Go through door.</Link>
             </div>
           </button>
@@ -216,7 +216,7 @@ function Controls(props) {
   } else if (props.currentRouterPath === "room8") {
     return (
       <div style={containerStyle}>
-        <div onClick={props.updateRoute}>
+        <div onClick={props.updateRouteToBoss}>
           <Link to="room10" style={linkStyle}>Continue through door</Link>
         </div>
       </div>
@@ -247,15 +247,41 @@ function Controls(props) {
   } else if (props.currentRouterPath === "room9") {
     return (
       <div style={containerStyle}>
-        <div onClick={props.updateRoute}>
+        <div onClick={props.updateRouteToBoss}>
           <Link to="room10" style={linkStyle}>Enter through the Golden doors</Link>
         </div>
+      </div>
+    );
+  } else if(props.currentRouterPath === "room10" && props.enemyIsDefeated === false){
+    return (
+      <div className="controlAdjust" style={centerControls}>
+        <div style={attackControls}>
+          <div>
+            <button className="green" style={attackBtnStyle} disabled={props.attackDisabled} onClick={props.usePotion} >Use Potion: {props.potions}</button>
+          </div>
+          <div>
+            <button style={attackBtnStyle} disabled={props.attackDisabled} className="attackButton red" onClick={props.damageEnemy}>Attack</button>
+          </div>
+        </div>
+        <style jsx>{`
+          .green{
+            background-color: #50AA4C;
+            color: #e5e5e5;
+          }
+          .red{
+            background-color: #A50104;
+            color: #e5e5e5;
+          }
+          .controlAdjust{
+            padding-top: 20px;
+          }
+      `}</style>
       </div>
     );
   } else if (props.currentRouterPath === "room10") {
     return (
       <div className="thankYou">
-        <p>Thank you for playing the game! no boss has been implemented at the moment. Sorry!</p>
+        <p>You won! Thank you for playing the game!</p>
         <button onClick={props.resetGame}>Reset Game</button>
         <style jsx>{`
           .thankYou {

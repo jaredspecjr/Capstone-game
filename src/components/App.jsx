@@ -11,6 +11,7 @@ import Room9 from "./Room9";
 import Room10 from "./Room10";
 import HealthBar from "./HealthBar";
 import Controls from "./Controls";
+import Boss from "./Boss";
 import { Route, Switch } from "react-router-dom";
 // import { browserHistory } from "react-router";
 
@@ -34,7 +35,9 @@ class App extends Component {
       potions: 0,
       potion1: true,
       potion2: true,
-      roomSearched: false
+      roomSearched: false,
+      type: "Shady Knight",
+      stronger: false,
     };
     this.damagePlayer = this.damagePlayer.bind(this);
     this.damageEnemy = this.damageEnemy.bind(this);
@@ -55,6 +58,8 @@ class App extends Component {
     this.noItemsFound = this.noItemsFound.bind(this);
     this.resetPotion = this.resetPotion.bind(this);
     this.resetGame = this.resetGame.bind(this);
+    this.updateRouteToBoss = this.updateRouteToBoss.bind(this);
+    this.bossConfirm = this.bossConfirm.bind(this);
   }
   componentWillMount() {
     this.updateRoute();
@@ -78,6 +83,26 @@ class App extends Component {
     const cleanedExtension = this.cleanExtension(routeExtension);
     this.setState({
       currentRoute: cleanedExtension
+    });
+  }
+  updateRouteToBoss() {
+    this.enemyReset();
+    this.resetPotion();
+    this.bossConfirm();
+    const routeExtension = location.hash;
+    const cleanedExtension = this.cleanExtension(routeExtension);
+    this.setState({
+      currentRoute: cleanedExtension
+    });
+  }
+  bossConfirm(){
+    let newType = "Phantom";
+    let newStronger = true;
+    this.setState({
+      type: newType
+    });
+    this.setState({
+      stronger: newStronger
     });
   }
 
@@ -334,7 +359,9 @@ class App extends Component {
               potion1={this.state.potion1}
               roomSearched={this.state.roomSearched}
               pickUpPotion={this.pickUpPotion}
-              noItemsFound={this.noItemsFound}/>}/>
+              noItemsFound={this.noItemsFound}
+              type={this.state.type}
+              stronger={this.state.stronger}/>}/>
             <Route path="/room5" render={()=><Room5
               potion1={this.state.potion1}
               roomSearched={this.state.roomSearched}
@@ -352,7 +379,9 @@ class App extends Component {
               enemyHurt={this.state.enemyHurt}
               playerHurt={this.state.playerHurt}
               amountHealed={this.state.amountHealed}
-              isEnemyDefeated={this.isEnemyDefeated}/>}/>
+              isEnemyDefeated={this.isEnemyDefeated}
+              type={this.state.type}
+              stronger={this.state.stronger}/>}/>
             <Route path="/room8" render={()=><Room8/>}/>
             <Route path="/room9" render={()=><Room9
               enemyHealth={this.state.enemyHealth}
@@ -365,8 +394,23 @@ class App extends Component {
               enemyHurt={this.state.enemyHurt}
               playerHurt={this.state.playerHurt}
               amountHealed={this.state.amountHealed}
-              isEnemyDefeated={this.isEnemyDefeated}/>}/>
-            <Route path="/room10" render={()=><Room10/>}/>
+              isEnemyDefeated={this.isEnemyDefeated}
+              type={this.state.type}
+              stronger={this.state.stronger}/>}/>
+            <Route path="/room10" render={()=><Room10
+              enemyHealth={this.state.enemyHealth}
+              enemyIsDefeated={this.state.enemyIsDefeated}
+              enemyAttacked={this.state.enemyAttacked}
+              playerAttacked={this.state.playerAttacked}
+              potionUsed={this.state.potionUsed}
+              damagePlayer={this.damagePlayer}
+              didEnemyAttack={this.didEnemyAttack}
+              enemyHurt={this.state.enemyHurt}
+              playerHurt={this.state.playerHurt}
+              amountHealed={this.state.amountHealed}
+              isEnemyDefeated={this.isEnemyDefeated}
+              type={this.state.type}
+              stronger={this.state.stronger}/>}/>
           </Switch>
         </div>
         <div className="controls">
@@ -378,7 +422,8 @@ class App extends Component {
             usePotion={this.usePotion}
             pickUpPotion={this.pickUpPotion}
             searchClicked={this.searchClicked}
-            resetGame={this.resetGame}/>
+            resetGame={this.resetGame}
+            updateRouteToBoss={this.updateRouteToBoss}/>
         </div>
         <style jsx>{`
           .App {
@@ -386,6 +431,7 @@ class App extends Component {
             flex-direction: column;
             background-color: black;
             margin: -10px;
+            margin-bottom: -20px;
           }
           .stage {
             border: 5px solid black;
@@ -396,9 +442,8 @@ class App extends Component {
             align-self: center;
           }
           .controls {
-            border: 10px solid black;
             margin-top: 50px;
-            height: 280px;
+            height: 285px;
             width: 100%;
             align-self: center;
           }

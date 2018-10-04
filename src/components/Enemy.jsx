@@ -13,7 +13,9 @@ function Enemy(props) {
 
   let currentContent = null;
   if(props.enemyAttacked === true){
-    currentContent = <EnemyTxt playerHurt={props.playerHurt} didEnemyAttack={props.didEnemyAttack}/>;
+    currentContent = <EnemyTxt playerHurt={props.playerHurt} didEnemyAttack={props.didEnemyAttack}
+      type={props.type}
+      stronger={props.stronger}/>;
   } else if(props.playerAttacked === true){
     currentContent = <PlayerTxt enemyHurt={props.enemyHurt} damagePlayer={props.damagePlayer}
       isEnemyDefeated={props.isEnemyDefeated}/>;

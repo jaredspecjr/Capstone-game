@@ -4,6 +4,7 @@
   animation-duration: 1s;
   animation-play-state: running;
   animation-timing-function: step-end;
+  
 }
 @keyframes
 /*this.timer = setTimeout(() => this.damagePlayer(), 1000);*/

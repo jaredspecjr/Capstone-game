@@ -2,11 +2,13 @@ import React from "react";
 import PropTypes from "prop-types";
 
 function EnemyTxt(props){
+
+
   return (
     <div>
       <div className="container">
         <div>
-          <p>Shady knight did {props.playerHurt} damage!</p>
+          <p>{props.type} did {props.playerHurt} damage!</p>
         </div>
         <div className="button">
           <button className="buttonStyle" onClick={props.didEnemyAttack}>Next</button>
