@@ -20,7 +20,7 @@ class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      healthLevel: 20,
+      healthLevel: 100,
       playerHurt: 0,
       enemyHurt: 0,
       amountHealed:0,
