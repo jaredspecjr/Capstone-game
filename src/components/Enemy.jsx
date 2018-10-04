@@ -118,17 +118,17 @@ function Enemy(props) {
             100%{transform: translateX(0px)}
           }
           .enemyHealth {
-            background-color: red;
+            background-color: #A50104;
             height: 30px;
             transition: width 1s; background-color: 1s;
             color: white;
           }
           .healthBarStyle {
-            border: 2px solid white;
+            border: 1px solid #757780;
             margin-right: 10px;
             height: 30px;
             width: 300px;
-            background-color: silver;
+            background-color: #757780;
           }
       `}</style>
     </div>

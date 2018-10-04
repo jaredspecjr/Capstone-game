@@ -104,11 +104,11 @@ function Controls(props) {
         </div>
         <style jsx>{`
           .green{
-            background-color: #56c456;
+            background-color: #50AA4C;
             color: #e5e5e5;
           }
           .red{
-            background-color: red;
+            background-color: #A50104;
             color: #e5e5e5;
           }
       `}</style>
@@ -177,11 +177,11 @@ function Controls(props) {
         </div>
         <style jsx>{`
           .green{
-            background-color: #56c456;
+            background-color: #50AA4C;
             color: #e5e5e5;
           }
           .red{
-            background-color: red;
+            background-color: #A50104;
             color: #e5e5e5;
           }
       `}</style>
@@ -234,11 +234,11 @@ function Controls(props) {
         </div>
         <style jsx>{`
           .green{
-            background-color: #56c456;
+            background-color: #50AA4C;
             color: #e5e5e5;
           }
           .red{
-            background-color: red;
+            background-color: #A50104;
             color: #e5e5e5;
           }
       `}</style>

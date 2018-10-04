@@ -406,8 +406,8 @@ class App extends Component {
             width: 600px;
             margin-top: 15px;
             height: 50px;
-            background-color: silver;
-            border: 5px solid black;
+            background-color: #757780;
+            border: 1px solid #757780;
             align-self: center;
           }
       `}</style>

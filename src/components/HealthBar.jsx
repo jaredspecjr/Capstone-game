@@ -5,7 +5,7 @@ function HealthBar(props){
   const STATUS = {
     width: `${props.healthLevel}%`
   };
-  
+
   return (
     <div style={STATUS} className="health">
       <div>
@@ -13,7 +13,7 @@ function HealthBar(props){
       </div>
       <style jsx>{`
         .health {
-          background-color: green;
+          background-color: #50AA4C;
           height: 50px;
           transition: width 1s; background-color: 1s;
           color: white;
