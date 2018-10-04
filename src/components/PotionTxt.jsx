@@ -49,7 +49,7 @@ function PotionTxt(props){
 }
 PotionTxt.propTypes = {
   damagePlayer: PropTypes.func.isRequired,
-  amountHealed: PropTypes.func.isRequired
+  amountHealed: PropTypes.number.isRequired
 };
 
 export default PotionTxt;

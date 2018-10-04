@@ -20,7 +20,7 @@ class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      healthLevel: 100,
+      healthLevel: 20,
       playerHurt: 0,
       enemyHurt: 0,
       amountHealed:0,
@@ -101,7 +101,14 @@ class App extends Component {
 
   isPlayerDefeated() {
     if(this.state.healthLevel <= 0){
-      window.location.href = "http://localhost:8080/";
+      let location = window.location.href;
+      if(location.includes("local")){
+        window.location.href = "http://localhost:8080/";
+      } else if (location.includes("video")){
+        window.location.href = "https://videogame-bef13.firebaseapp.com";
+      } else {
+        return;
+      }
     } else {
       return null;
     }
@@ -284,7 +291,12 @@ class App extends Component {
   }
   resetGame() {
     if(this.state.healthLevel > 0){
-      window.location.href = "http://localhost:8080/";
+      let location = window.location.href;
+      if(location.includes("local")){
+        window.location.href = "http://localhost:8080/";
+      } else if(location.includes("video")){
+        window.location.href = "https://videogame-bef13.firebaseapp.com";
+      }
     } else {
       return null;
     }
