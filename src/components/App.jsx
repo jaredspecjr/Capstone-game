@@ -66,7 +66,6 @@ class App extends Component {
 
   }
 
-
   cleanExtension(routeExtension) {
     let cleanedExtension = routeExtension.replace("#/", "");
     return cleanedExtension;

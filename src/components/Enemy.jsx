@@ -9,6 +9,8 @@ function Enemy(props) {
   const ENEMYSTATUS = {
     width: `${props.enemyHealth}%`
   };
+
+
   let currentContent = null;
   if(props.enemyAttacked === true){
     currentContent = <EnemyTxt playerHurt={props.playerHurt} didEnemyAttack={props.didEnemyAttack}/>;
@@ -21,6 +23,13 @@ function Enemy(props) {
   } else {
     currentContent = "lol";
   }
+  let enemyWidth = ["enemy"];
+  if(props.playerAttacked === true){
+    enemyWidth.push("enemyDamaged");
+  } else if (props.enemyAttacked === true){
+    enemyWidth.push("enemyAttack");
+  }
+
   return (
     <div className="container">
       <div className="panel">
@@ -31,7 +40,7 @@ function Enemy(props) {
         </div>
       </div>
       <div className="panel">
-        <img src={enemy} className="enemy"/>
+        <img src={enemy} className={enemyWidth.join(" ")}/>
       </div>
       <div className="panel">
         {currentContent}
@@ -67,6 +76,46 @@ function Enemy(props) {
           }
           .enemy {
             width: 135px;
+          }
+          .theClass {
+            width: 135px;
+          }
+          .enemyDamaged{
+            animation-name: damaged;
+            animation-duration: .3s;
+            animation-iteration-count: 1;
+          }
+          .enemyAttack{
+            animation-name: attack;
+            animation-duration: .2s;
+            animation-iteration-count: 2;
+          }
+          @keyframes attack{
+            0%{transform: translateY(0px)}
+            50%{transform: translateY(-40px)}
+            100%{transform:translateY(0px)}
+          }
+          @keyframes damaged{
+            0%{transform: translateX(0px)}
+            10%{transform: translateX(-5px)}
+            15%{transform: translateX(5px)}
+            20%{transform: translateX(-5px)}
+            25%{transform: translateX(5px)}
+            30%{transform: translateX(-5px)}
+            35%{transform: translateX(5px)}
+            40%{transform: translateX(-5px)}
+            45%{transform: translateX(5px)}
+            50%{transform: translateX(-5px)}
+            55%{transform: translateX(5px)}
+            60%{transform: translateX(-5px)}
+            65%{transform: translateX(5px)}
+            70%{transform: translateX(-5px)}
+            75%{transform: translateX(5px)}
+            80%{transform: translateX(-5px)}
+            85%{transform: translateX(5px)}
+            90%{transform: translateX(-5px)}
+            95%{transform: translateX(5px)}
+            100%{transform: translateX(0px)}
           }
           .enemyHealth {
             background-color: red;

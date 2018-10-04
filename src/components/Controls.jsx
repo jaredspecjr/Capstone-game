@@ -260,6 +260,11 @@ function Controls(props) {
         <style jsx>{`
           .thankYou {
             color: white;
+            font-size: 50px;
+            text-align: center;
+            margin-top: -300px;
+            padding-left: 300px;
+            padding-right: 300px;
           }
       `}</style>
       </div>
